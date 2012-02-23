@@ -18,20 +18,23 @@
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
+# Get the long list of APNs
+PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$#(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # This is where we'd set a backup provider if we had one
 #$(call inherit-product, device/sample/products/backup_overlay.mk)
 $(call inherit-product, device/samsung/galaxysmtd/device.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
+#$(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
 
 # Galaxy S uses high-density artwork where available
 PRODUCT_LOCALES += hdpi
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := full_galaxysmtd
-PRODUCT_DEVICE := galaxysmtd
-PRODUCT_BRAND := samsung
-PRODUCT_MANUFACTURER := samsung
-PRODUCT_MODEL := GT-I9000
+#PRODUCT_NAME := full_galaxysmtd
+#PRODUCT_DEVICE := galaxysmtd
+#PRODUCT_BRAND := samsung
+#PRODUCT_MANUFACTURER := samsung
+#PRODUCT_MODEL := GT-I9000
